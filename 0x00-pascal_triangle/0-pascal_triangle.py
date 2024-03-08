@@ -4,6 +4,7 @@ Pascal's Triangle generator function"""
 
 
 def pascal_triangle(n):
+    """ This funciton generates Pascal's Triangle"""
     if n <= 0:
         return []
     elif n == 1:
