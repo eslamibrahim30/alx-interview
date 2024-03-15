@@ -19,7 +19,8 @@ def canUnlockAll(boxes):
             if i in unlocked:
                 checked.add(i)
                 for key in boxes[i]:
-                    unlocked.add(key)
+                    if key < len(boxes):
+                        unlocked.add(key)
         unchecked = unchecked.difference(checked)
         cur_unlocked = len(unlocked)
         cur_unchecked = len(unchecked)
