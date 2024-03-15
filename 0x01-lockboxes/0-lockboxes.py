@@ -18,9 +18,7 @@ def canUnlockAll(boxes):
                 checked.add(i)
                 for key in boxes[i]:
                     unlocked.add(key)
-        previous_len = len(unchecked)
-        unchecked = unchecked.difference(checked)
-        current_len = len(unchecked)
-        if previous_len == current_len:
+        if not checked:
             return False
+        unchecked = unchecked.difference(checked)
     return True
