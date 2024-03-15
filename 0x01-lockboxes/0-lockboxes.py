@@ -13,14 +13,14 @@ def canUnlockAll(boxes):
     unchecked = set(range(len(boxes)))
     while len(unlocked) != len(boxes):
         checked = set()
-        previous_len = len(unlocked)
         for i in unchecked:
             if i in unlocked:
                 checked.add(i)
                 for key in boxes[i]:
                     unlocked.add(key)
-        current_len = len(unlocked)
+        previous_len = len(unchecked)
         unchecked = unchecked.difference(checked)
+        current_len = len(unchecked)
         if previous_len == current_len:
             return False
     return True
