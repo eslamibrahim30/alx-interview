@@ -8,6 +8,8 @@ def canUnlockAll(boxes):
     """
     This funciton determines if all the boxes can be unlocked
     """
+    if not boxes:
+        return True
     unlocked = set()
     unlocked.add(0)
     unchecked = set(range(len(boxes)))
