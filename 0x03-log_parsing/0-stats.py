@@ -17,6 +17,14 @@ status_code = {
     "405": 0,
     "500": 0,
 }
+ip_pattern = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+date_pattern = r"\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\]"
+source = r'"GET /projects/260 HTTP/1.1"'
+number = r"\d{1,4}"
+regex_rep = "{} - {} {} {} {}".format(
+    ip_pattern, date_pattern, source, number, number
+)
+pattern = re.compile(regex_rep)
 
 
 def print_info():
@@ -27,27 +35,16 @@ def print_info():
     return None
 
 
-def sigterm_handler(signal, frame):
-    print_info()
-    return None
-
-
 if __name__ == '__main__':
-    signal.signal(signal.SIGTERM, sigterm_handler)
-    ip_pattern = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
-    date_pattern = r"\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\]"
-    source = r'"GET /projects/260 HTTP/1.1"'
-    number = r"\d{1,4}"
-    regex_rep = "{} - {} {} {} {}".format(
-        ip_pattern, date_pattern, source, number, number
-    )
-    pattern = re.compile(regex_rep)
-    for line in sys.stdin:
-        line = line.rstrip()
-        if re.match(pattern, line) is not None:
-            total_size += int(line.split()[-1])
-            status_code[line.split()[-2]] += 1
-            counter += 1
-        if counter == 10:
-            print_info()
-            counter = 0
+    try:
+        for line in sys.stdin:
+            line = line.rstrip()
+            if re.match(pattern, line) is not None:
+                total_size += int(line.split()[-1])
+                status_code[line.split()[-2]] += 1
+                counter += 1
+            if counter == 10:
+                print_info()
+                counter = 0
+    except KeyboardInterrupt:
+        print_info()
