@@ -6,7 +6,10 @@ import sys
 import re
 
 
-if __name__ == "__main__":
+def main():
+    """
+    This is the main function
+    """
     ip_pattern = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
     date_pattern = r"\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\]"
     source = r'"GET /projects/260 HTTP/1.1"'
@@ -45,3 +48,7 @@ if __name__ == "__main__":
         for key in status_code:
             if status_code[key] != 0:
                 print("{}: {}".format(key, status_code[key]))
+
+
+if __name__ == '__main__':
+    main()
