@@ -16,11 +16,11 @@ status_code = {
     "405": 0,
     "500": 0,
 }
-ip_pattern = r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}"
+ip_pattern = r"(.*?)"
 date_pattern = r"\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\]"
 source = r'"GET /projects/260 HTTP/1.1"'
 number = r"\d{1,4}"
-regex_rep = "{} - {} {} {} {}".format(
+regex_rep = "{}\s*-\s*{} {} {} {}".format(
     ip_pattern, date_pattern, source, number, number
 )
 pattern = re.compile(regex_rep)
