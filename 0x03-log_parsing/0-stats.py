@@ -4,7 +4,6 @@ This module for task "Log parsing"
 """
 import sys
 import re
-import signal
 total_size = 0
 counter = 0
 status_code = {
@@ -46,5 +45,6 @@ if __name__ == '__main__':
             if counter == 10:
                 print_info()
                 counter = 0
+        print_info()
     except KeyboardInterrupt:
         print_info()
