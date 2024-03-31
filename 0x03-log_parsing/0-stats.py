@@ -20,8 +20,8 @@ ip_pattern = r"(.*?)"
 date_pattern = r"\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6})\]"
 source = r'"GET /projects/260 HTTP/1.1"'
 number = r"\d{1,4}"
-regex_rep = "{}\s*-\s*{} {} {} {}".format(
-    ip_pattern, date_pattern, source, number, number
+regex_rep = "{}\s*-\s*{} {} (.*?) {}".format(
+    ip_pattern, date_pattern, source, number
 )
 pattern = re.compile(regex_rep)
 
@@ -40,7 +40,8 @@ if __name__ == '__main__':
             line = line.rstrip()
             if re.match(pattern, line) is not None:
                 total_size += int(line.split()[-1])
-                status_code[line.split()[-2]] += 1
+                if line.split()[-2].isdigit():
+                    status_code[line.split()[-2]] += 1
                 counter += 1
             if counter == 10:
                 print_info()
