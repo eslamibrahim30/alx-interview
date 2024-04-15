@@ -40,7 +40,7 @@ def valid_pos(queens: List[List]) -> bool:
 
 def list_queen_pos(queens: List[List], n: int) -> list:
     """
-    This method for solving the N queens puzzle 
+    This method for solving the N queens puzzle.
     """
     if len(queens) > n:
         return None
