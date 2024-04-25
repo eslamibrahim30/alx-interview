@@ -2,10 +2,9 @@
 """
 This module for task "Rotate 2D Matrix"
 """
-from typing import List
 
 
-def rotate_2d_matrix(matrix: List[List]) -> None:
+def rotate_2d_matrix(matrix):
     """
     This function rotates an n x n 2D matrix 90 degrees clockwise.
     """
