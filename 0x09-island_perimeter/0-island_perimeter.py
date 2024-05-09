@@ -2,10 +2,9 @@
 """
 This module for task "Island Perimeter"
 """
-from typing import List
 
 
-def island_perimeter(grid: List[List[int]]):
+def island_perimeter(grid):
     """
     This function returns the perimeter of the island described in grid.
     """
