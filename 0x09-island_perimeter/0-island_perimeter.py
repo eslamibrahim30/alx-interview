@@ -27,6 +27,4 @@ def island_perimeter(grid):
                     j_end = j
     if count == 0:
         return 0
-    if count == 1:
-        return 1
     return ((j_end - j_start + 1) + (i_end - i_start + 1)) * 2
