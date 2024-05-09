@@ -10,23 +10,13 @@ def island_perimeter(grid):
     """
     if not isinstance(grid, list):
         return 0
-    i_start = len(grid)
-    i_end = 0
-    j_start = len(grid)
-    j_end = 0
-    count = 0
+    perm = 0
     for i in range(len(grid)):
         for j in range(len(grid[0])):
             if grid[i][j] == 1:
-                count += 1
-                if i < i_start:
-                    i_start = i
-                if j < j_start:
-                    j_start = j
-                if i > i_end:
-                    i_end = i
-                if j > j_end:
-                    j_end = j
-    if count == 0:
-        return 0
-    return ((j_end - j_start + 1) + (i_end - i_start + 1)) * 2
+                perm += 4
+                if i + 1 < len(grid) and grid[i + 1][j] == 1:
+                    perm -= 2
+                if j + 1 < len(grid[0]) and grid[i][j + 1] == 1:
+                    perm -= 2
+    return perm
