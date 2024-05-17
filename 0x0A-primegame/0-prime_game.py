@@ -12,7 +12,7 @@ def countTurns(n):
     prime = [True for _ in range(n+1)]
     turns = 0
     p = 2
-    while (p * p <= n):
+    while (p <= n):
         if (prime[p] is True):
             turns += 1
             for i in range(p * p, n+1, p):
