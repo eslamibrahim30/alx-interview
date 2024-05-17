@@ -3,17 +3,23 @@
 This module for task "Prime Game"
 """
 
+
 def countTurns(n):
+    """
+    This function returns the number of rest turns of the round
+    based on given number.
+    """
     prime = [True for i in range(n+1)]
     turns = 0
     p = 2
     while (p * p <= n):
-        if (prime[p] == True):
+        if (prime[p] is True):
             turns += 1
             for i in range(p * p, n+1, p):
                 prime[i] = False
         p += 1
     return turns
+
 
 def isWinner(x, nums):
     """
