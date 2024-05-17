@@ -35,4 +35,6 @@ def isWinner(x, nums):
             p1 += 1
     if p1 > p2:
         return 'Maria'
-    return 'Ben'
+    elif p2 > p1:
+        return 'Ben'
+    return None
