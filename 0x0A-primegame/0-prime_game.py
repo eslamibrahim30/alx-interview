@@ -9,7 +9,7 @@ def countTurns(n):
     This function returns the number of rest turns of the round
     based on given number.
     """
-    prime = [True for i in range(n+1)]
+    prime = [True for _ in range(n+1)]
     turns = 0
     p = 2
     while (p * p <= n):
@@ -25,6 +25,8 @@ def isWinner(x, nums):
     """
     This function returns the name of the player that won the most rounds.
     """
+    if not nums or x < 1:
+        return None
     p1 = 0
     p2 = 0
     for round in range(x):
