@@ -24,20 +24,19 @@ def validUTF8(data):
     idx = 0
     while idx < len(data):
         n_bytes = countFirstOnes(data[idx])
+        c_char = data[idx] & 255
         if idx + n_bytes - 1 >= len(data):
-            return False
-        elif data[idx] > 255:
             return False
         elif n_bytes == 0:
             idx += 1
         else:
             idx += 1
             n_bytes -= 1
+            c_char = data[idx] & 255
             while n_bytes:
-                if (data[idx] >> 6) ^ 2:
-                    return False
-                if data[idx] > 255:
+                if (c_char >> 6) ^ 2:
                     return False
                 idx += 1
                 n_bytes -= 1
+                c_char = data[idx] & 255
     return True
